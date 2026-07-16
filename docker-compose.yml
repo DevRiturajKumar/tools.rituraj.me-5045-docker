@@ -1,0 +1,42 @@
+services:
+  tools:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: tools.rituraj.me-5045-image
+    container_name: tools.rituraj.me-5045-container
+    network_mode: bridge
+    ports:
+      - "127.0.0.1:5045:5045"
+    read_only: true
+    tmpfs:
+      - /tmp:size=64M
+    environment:
+      - PORT=5045
+      - FLASK_SECRET_KEY=0a20516fa809a718ae7f1d55220aa01934cc5aa57682c9cb18034586d00b1d16
+      - GUNICORN_WORKERS=4
+      - LOG_LEVEL=INFO
+      - AUTH_USER=admin
+      - AUTH_PASSWORD_HASH=$$2b$$12$$mnaDoyqI8XVafRFea0MOZ.g6T9vtKOG3yEQ4s5Ip2zcGxXG1nZmA6
+      - TOTP_SECRET=JBSWY3DPEHPK3PXP
+      - SESSION_LIFETIME=86400
+      - EXEC_MODE=ssh-docker
+      - SSH_HOST=185.255.95.245
+      - SSH_PORT=8239
+      - SSH_USER=root
+      - SSH_PASS=Rr@823933#
+      - DOCKER_CONTAINER=dk_openclaw-openclaw-gateway-1
+      - DOCKER_SKILLS_PATH=/home/node/clawd/skills
+      - SKILLS_DIR=/app/skills
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-sf", "http://127.0.0.1:5045/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"

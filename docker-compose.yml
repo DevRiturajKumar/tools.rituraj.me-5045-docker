@@ -1,5 +1,5 @@
 services:
-  tools:
+  tools.rituraj.me-5045-container:
     build:
       context: .
       dockerfile: Dockerfile

@@ -186,6 +186,8 @@ def get_skills_data():
         'wordpress': {
             'icon': 'globe',
             'label': '🌐 WordPress',
+                'label_clean': 'WordPress',
+                'icon_svg': '''<svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>''',
             'skills': {
                 'riturajkumar-wordpress': {
                     'label': 'RiturajKumar.com',
@@ -212,6 +214,8 @@ def get_skills_data():
         'server': {
             'icon': 'server',
             'label': '🖥 Server',
+                'label_clean': 'Server',
+                'icon_svg': '''<svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"/></svg>''',
             'skills': {
                 'vps-manager': {
                     'label': 'VPS Manager',
@@ -249,6 +253,8 @@ def get_skills_data():
         'dev': {
             'icon': 'code',
             'label': '⚙ Dev Tools',
+                'label_clean': 'Dev Tools',
+                'icon_svg': '''<svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>''',
             'skills': {
                 'github-skill': {
                     'label': 'GitHub API',

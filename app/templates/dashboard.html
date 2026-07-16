@@ -79,7 +79,7 @@
         {% set first_tab = true %}
         {% for tab_id, tab in skills.items() %}
         <button onclick="switchTab('{{ tab_id }}')"
-                class="tab-btn flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium {% if first_tab %}active bg-emerald-600 text-white shadow-sm{% else %}text-gray-600 dark:text-gray-400 hover:bg-green-50 dark:hover:bg-gray-800 border border-gray-200/60 dark:border-gray-700/50{% endif %}">
+                class="tab-btn flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium {% if loop.index == 1 %}active bg-emerald-600 text-white shadow-sm{% else %}text-gray-600 dark:text-gray-400 hover:bg-green-50 dark:hover:bg-gray-800 border border-gray-200/60 dark:border-gray-700/50{% endif %}">
           {{ tab.label }}
           <span class="text-[10px] {% if first_tab %}bg-emerald-500/30 text-white{% else %}bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400{% endif %} px-1.5 py-0.5 rounded-full">{{ tab.skills|length }}</span>
         </button>
@@ -90,7 +90,7 @@
       <!-- Tab Content -->
       {% set first_tab = true %}
       {% for tab_id, tab in skills.items() %}
-      <div id="tab-{{ tab_id }}" class="tab-content {% if not first_tab %}hidden{% endif %}">
+      <div id="tab-{{ tab_id }}" class="tab-content {% if loop.index > 1 %}hidden{% endif %}">
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           {% for skill_id, skill in tab.skills.items() %}
           <div class="skill-card bg-white dark:bg-gray-800/80 rounded-xl border border-gray-200 dark:border-gray-700/50 p-5 hover:border-emerald-300 dark:hover:border-emerald-600 shadow-sm hover:shadow-md transition-all" onclick="openSkill('{{ tab_id }}', '{{ skill_id }}')" id="card-{{ skill_id }}">
@@ -349,6 +349,9 @@
       setTimeout(() => toast.remove(), 300);
     }, 3000);
   }
+
+  // ── Initialize first tab on load ──
+  switchTab("{{ first_tab_id }}");
 
   // ── Theme Toggle ──
   (function() {

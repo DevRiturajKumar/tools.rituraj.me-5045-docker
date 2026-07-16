@@ -553,8 +553,13 @@ def logout():
 @login_required
 def dashboard():
     skills = get_skills_data()
+    # Get first tab id for initial active state
+    first_tab_id = list(skills.keys())[0] if skills else 'lookup'
     return render_template('dashboard.html',
+                         first_tab=True,
                          skills=skills,
+                         skills_json=json.dumps(skills),
+                         first_tab_id=first_tab_id,
                          user=AUTH_USER)
 
 

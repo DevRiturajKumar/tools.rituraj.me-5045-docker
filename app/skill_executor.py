@@ -34,6 +34,7 @@ def execute_skill_ssh(skill_name: str, args: list, config: dict) -> dict:
     ssh_cmd = [
         sshpass_bin, '-p', ssh_pass,
         ssh_bin, '-o', 'StrictHostKeyChecking=no',
+        '-o', 'UserKnownHostsFile=/dev/null',
         '-o', 'ConnectTimeout=15',
         '-p', str(ssh_port),
         f'{ssh_user}@{ssh_host}',
